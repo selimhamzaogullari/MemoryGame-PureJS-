@@ -1,7 +1,7 @@
 document.addEventListener("DOMContentLoaded", function(){
     // Oyun alanı Oluşturuldu
     var game = document.getElementsByClassName("game")[0];
-    console.log(game);
+    //console.log(game);
     for(var m=0 ; m<20 ; m++) {
         game.insertAdjacentHTML("afterbegin" ,"<div class=\"flip-container\">\n" +
             "        <div class=\"flipper\">\n" +
