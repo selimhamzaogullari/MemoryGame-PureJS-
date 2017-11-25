@@ -1,0 +1,110 @@
+body {
+    background: radial-gradient(ellipse at center, #434A54 0%, #656D78 100%);
+    font-family: 'Montserrat', sans-serif;
+}
+h1 {
+    text-align: center;
+    color: #c3c3c3;
+    letter-spacing: 2px;
+}
+.game {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+.flip-container {
+    -webkit-perspective: 1000;
+    -moz-perspective: 1000;
+    -o-perspective: 1000;
+    perspective: 1000;
+    border: 1px solid #ccc;
+    margin: 20px 20px ;
+    cursor: pointer;
+}
+
+.cevir{
+    -webkit-transform: rotateY(180deg);
+    -moz-transform: rotateY(180deg);
+    -o-transform: rotateY(180deg);
+    transform: rotateY(180deg);
+}
+
+.dogru {
+    -webkit-transform: rotateY(180deg);
+    -moz-transform: rotateY(180deg);
+    -o-transform: rotateY(180deg);
+    transform: rotateY(180deg);
+}
+
+.flip-container, .front, .back {
+    width: 150px;
+    height: 150px;
+}
+
+.flipper {
+    -webkit-transition: 0.6s;
+    -webkit-transform-style: preserve-3d;
+    -moz-transition: 0.6s;
+    -moz-transform-style: preserve-3d;
+    -o-transition: 0.6s;
+    -o-transform-style: preserve-3d;
+    transition: 0.6s;
+    transform-style: preserve-3d;
+    position: relative;
+}
+.front, .back {
+    -webkit-backface-visibility: hidden;
+    -moz-backface-visibility: hidden;
+    -o-backface-visibility: hidden;
+    backface-visibility: hidden;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.front {
+    background: url(http://nodeframework.com/assets/img/js.png) center center;
+    background-size: 100% 100%;
+    z-index: 2;
+}
+
+.back {
+    -webkit-transform: rotateY(180deg);
+    -moz-transform: rotateY(180deg);
+    -o-transform: rotateY(180deg);
+    transform: rotateY(180deg);
+}
+.back img {
+    height: 150px;
+    width: 150px;
+}
+
+.front .name {
+    font-size: 2em;
+    display: inline-block;
+    background: rgba(33, 33, 33, 0.9);
+    color: #f8f8f8;
+    font-family: Courier;
+    padding: 5px 10px;
+    border-radius: 5px;
+    bottom: 60px;
+    left: 25%;
+    position: absolute;
+    text-shadow: 0.1em 0.1em 0.05em #333;
+
+    -webkit-transform: rotate(-20deg);
+    -moz-transform: rotate(-20deg);
+    -o-transform: rotate(-20deg);
+    transform: rotate(-20deg);
+}
+
+.back p {
+    position: absolute;
+    bottom: 40px;
+    left: 0;
+    right: 0;
+    text-align: center;
+    padding: 0 20px;
+    font-family: arial;
+    line-height: 2em;
+}
