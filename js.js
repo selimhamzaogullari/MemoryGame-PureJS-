@@ -1,5 +1,6 @@
 document.addEventListener("DOMContentLoaded", function(){
     // Oyun alanı Oluşturuldu
+    // master icin yorum satırı
     var game = document.getElementsByClassName("game")[0];
     //console.log(game);
     for(var m=0 ; m<20 ; m++) {
