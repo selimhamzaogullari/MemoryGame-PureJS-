@@ -1,8 +1,7 @@
 document.addEventListener("DOMContentLoaded", function(){
     // Oyun alanı Oluşturuldu
-    // master icin yorum satırı
     var game = document.getElementsByClassName("game")[0];
-    //console.log(game);
+    // console.log(game);
     for(var m=0 ; m<20 ; m++) {
         game.insertAdjacentHTML("afterbegin" ,"<div class=\"flip-container\">\n" +
             "        <div class=\"flipper\">\n" +
@@ -15,6 +14,10 @@ document.addEventListener("DOMContentLoaded", function(){
     var flipper = document.getElementsByClassName("flipper");
     var flipContainer = document.getElementsByClassName("flip-container");
     var back = document.getElementsByClassName("back");
+    var skorPaneli = document.getElementsByClassName("skor")[0];
+    var skorPuan = document.getElementsByClassName("skor-puan")[0];
+    var skorYeniRekor = document.getElementsByClassName("skor-yeni_rekor")[0];
+    var skorOncekiRekor = document.getElementsByClassName("skor-onceki_rekor")[0];
     var randSayi = [];
     var randSayi2 = [];
     var oyunSonu = [];
@@ -22,6 +25,8 @@ document.addEventListener("DOMContentLoaded", function(){
     var bug = 0 ;
     var dataNum,geciciDataNum,geciciDataNum2,ilkTiklanan,ikinciTiklanan ;
     var count = 0 ;
+    var skor = 0 ;
+    var rekor = window.localStorage.getItem("Rekor");
 // Otomatik sayı üret
     var otoSayi = function() {
         var adet = 10;
@@ -56,6 +61,8 @@ document.addEventListener("DOMContentLoaded", function(){
                     bug= 0;
                 } else {
                     if(geciciDataNum === geciciDataNum2) {
+                        skor += 100 ;
+                        // console.log("Skor => " + skor);
                         ilkTiklanan.classList.remove("cevir");
                         ikinciTiklanan.classList.remove("cevir");
                         ilkTiklanan.classList.add("dogru");
@@ -63,6 +70,8 @@ document.addEventListener("DOMContentLoaded", function(){
                         count = 0 ;
                         bug= 0;
                     } else {
+                        skor -= 5 ;
+                        // console.log("Skor => " + skor);
                         setTimeout(function(){
                             ilkTiklanan.classList.remove("cevir");
                             ikinciTiklanan.classList.remove("cevir");
@@ -76,13 +85,36 @@ document.addEventListener("DOMContentLoaded", function(){
                         if(oyunSonu[l].includes("dogru")) {
                             sayOyunSonu ++ ;
                             if(sayOyunSonu === 20) {
-                                setTimeout(function(){
-                                    alert(" Tebrikler Kazandınız :) ")
-                                }, 300);
+                                if(rekor === null) {
+                                    skorPuan.innerHTML += skor ;
+                                    skorOncekiRekor.innerHTML += "İlk Oyununuz" ;
+                                    skorYeniRekor.innerHTML += skor ;
+                                    setTimeout(function(){
+                                    skorPaneli.classList.add("goster-skor");
+                                    window.localStorage.setItem("Rekor" , skor);
+                                    }, 300);
+                                }
+                                else if(skor >= rekor) {
+                                    skorPuan.innerHTML += skor ;
+                                    skorOncekiRekor.innerHTML += rekor ;
+                                    skorYeniRekor.innerHTML += skor ;
+                                    setTimeout(function(){
+                                    skorPaneli.classList.add("goster-skor");
+                                    localStorage.Rekor = skor ;
+                                    }, 300);
+                                }else {
+                                    skorPuan.innerHTML += skor ;
+                                    skorOncekiRekor.innerHTML = "Rekor : " + rekor ;
+                                    skorYeniRekor.innerHTML = "Rekor İçin Gereken Puan : " + (rekor-skor) ;
+                                    setTimeout(function(){
+                                    skorPaneli.classList.add("goster-skor");
+                                    }, 300);
+                                }
                             }
                         }
-                        console.log("Sayılan Oyun Sonu => " + sayOyunSonu);
-                    } sayOyunSonu = 0 ; console.log("Olmadı Oyun Sonu => " + sayOyunSonu) ;
+                       // console.log("Sayılan Oyun Sonu => " + sayOyunSonu);
+                    } sayOyunSonu = 0 ; 
+                    // console.log("Olmadı Oyun Sonu => " + sayOyunSonu) ;
                 }
             }
         }
@@ -102,4 +134,16 @@ document.addEventListener("DOMContentLoaded", function(){
         }
         flipper[i].onclick = dondur;
     }
+
+// Puan Panelini Kapat
+document.getElementsByClassName("close")[0].onclick = function(){
+    skorPaneli.classList.remove("goster-skor");
+} 
+// (Puan Panelini Kapat)
+
 }); // (Data-num ve Resimler)
+
+    // Yeni Oyun
+function pageReload(){
+    window.location.reload();
+}; // (Yeni Oyun)

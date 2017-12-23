@@ -108,3 +108,88 @@ h1 {
     font-family: arial;
     line-height: 2em;
 }
+.skor {
+    width: 300px;
+    height: 400px;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    margin-left: -170px;
+    margin-top: -200px;
+    background: #fff ;
+    text-align: center;
+    padding: 0 20px;
+    color : #5b626e ;
+    opacity: 0 ;
+    z-index: -1;
+    transform: translateX(200px);
+    transition: all .5s ease-in-out;
+}
+p.skor-baslik {
+    font-size : 30px ;
+    color: #3a4659;
+}
+p.skor-tebrikler {
+    font-size : 18px ;
+    margin-bottom : 40px;
+}
+p.skor-puan , p.skor-yeni_rekor , p.skor-onceki_rekor {
+    font-size : 14px ;
+    text-align: left ;
+    margin-top: 30px;
+}
+p.skor-yeni_oyun {
+    margin-top: 60px;
+}
+p.skor-yeni_oyun a{
+    text-decoration: none;
+    font-size : 14px ;
+    padding: 10px 20px ;
+    background: #434A54;
+    color: #fff;
+    border: 1px solid #434A54;
+    transition: all .3s ease-in-out;
+}
+p.skor-yeni_oyun a:hover{
+    color: #434A54 ;
+    background: #fff;
+    border : 1px solid #434A54 ;
+}
+.goster-skor {
+    opacity: 1;
+    z-index: 1;
+    transform: translateX(0);
+}
+.close-panel {
+    position: absolute ;
+    right: 10px;
+    top: 10px;
+}
+.close {
+    width: 15px;
+    height: 15px;
+    position: relative;
+    cursor: pointer;
+}
+.close:after {
+    content: '';
+    position: absolute;
+    right: 50%;
+    margin-right: -1px;
+    top: 0;
+    width: 2px ;
+    height: 15px ;
+    transform: rotate(45deg);
+    background: #434A54;
+}
+.close:before {
+    content: '';
+    position: absolute;
+    left: 50% ;
+    margin-left: -1px;
+    top: 0;
+    width: 2px;
+    height: 15px;
+    transform: rotate(-45deg);
+    background: #434A54;
+}
